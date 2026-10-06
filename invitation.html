@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Invitation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+/* MAIN CONTAINER */
+.invitation {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ================= PAGE 1 ================= */
+
+.page1 {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(212,175,55,.16), transparent 30%),
+        linear-gradient(135deg, #050505, #151515, #050505);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+.page1.open {
+    transform: translateY(-100%);
+}
+
+.gold-border {
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(212,175,55,.7);
+}
+
+.gold-border::before,
+.gold-border::after {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-color: #d4af37;
+}
+
+.gold-border::before {
+    top: -1px;
+    left: -1px;
+    border-top: 3px solid;
+    border-left: 3px solid;
+}
+
+.gold-border::after {
+    right: -1px;
+    bottom: -1px;
+    border-right: 3px solid;
+    border-bottom: 3px solid;
+}
+
+.cover {
+    text-align: center;
+    padding: 30px;
+}
+
+.small-text {
+    letter-spacing: 7px;
+    color: #d4af37;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(55px, 12vw, 110px);
+    font-weight: 500;
+    line-height: .85;
+    background: linear-gradient(
+        90deg,
+        #8d6b20,
+        #f7e7a1,
+        #c89b2c,
+        #fff0a8,
+        #8d6b20
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.cover h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-top: 25px;
+}
+
+.line {
+    width: 100px;
+    height: 1px;
+    background: #d4af37;
+    margin: 30px auto;
+}
+
+.open-btn {
+    border: 1px solid #d4af37;
+    background: transparent;
+    color: #f5dc87;
+    padding: 15px 38px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.open-btn:hover {
+    background: #d4af37;
+    color: #080808;
+    box-shadow: 0 0 30px rgba(212,175,55,.4);
+}
+
+/* Floating golden particles */
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #d4af37;
+    border-radius: 50%;
+    opacity: .6;
+    animation: float 7s infinite ease-in-out;
+}
+
+.p1 { left: 15%; top: 20%; animation-delay: 0s; }
+.p2 { left: 80%; top: 25%; animation-delay: 1s; }
+.p3 { left: 25%; top: 75%; animation-delay: 2s; }
+.p4 { left: 70%; top: 80%; animation-delay: 3s; }
+.p5 { left: 50%; top: 10%; animation-delay: 4s; }
+.p6 { left: 90%; top: 60%; animation-delay: 2s; }
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0) scale(1);
+        opacity: .2;
+    }
+
+    50% {
+        transform: translateY(-35px) scale(1.8);
+        opacity: 1;
+    }
+}
+
+
+/* ================= PAGE 2 ================= */
+
+.page2 {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 50% 30%, #352713 0%, transparent 35%),
+        linear-gradient(145deg, #090909, #1c140b, #050505);
+
+    padding: 25px;
+}
+
+/* Premium visual frame */
+
+.card {
+    width: min(440px, 92vw);
+    min-height: 90vh;
+    max-height: 95vh;
+
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(218,175,55,.7);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.85)
+        ),
+        radial-gradient(
+            ellipse at center,
+            #a87532 0%,
+            #4d3017 18%,
+            #15100b 55%,
+            #050505 100%
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.8),
+        inset 0 0 60px rgba(212,175,55,.12);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 45px 30px;
+}
+
+/* Premium "photo" effect */
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(255,226,147,.38),
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(177,112,32,.3),
+            transparent 30%
+        );
+
+    mix-blend-mode: screen;
+}
+
+/* Decorative circle */
+
+.card::after {
+    content: "✦";
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #f0ce6a;
+    font-size: 30px;
+}
+
+/* Inner border */
+
+.inner-frame {
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(255,224,133,.35);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+.content .eyebrow {
+    color: #e8c866;
+    letter-spacing: 5px;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 55px;
+    line-height: .9;
+    font-weight: 500;
+    margin: 15px 0;
+    color: #fff4d0;
+}
+
+.content .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #e4c879;
+}
+
+.divider {
+    width: 70px;
+    height: 1px;
+    background: #d4af37;
+    margin: 22px auto;
+}
+
+.details {
+    font-size: 12px;
+    line-height: 2;
+    color: #eee;
+    letter-spacing: 1px;
+}
+
+.details strong {
+    color: #f1d47c;
+    font-weight: 500;
+}
+
+.location {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+.close-btn {
+    margin-top: 25px;
+    padding: 11px 25px;
+    border: 1px solid rgba(212,175,55,.7);
+    background: rgba(0,0,0,.3);
+    color: #e8c866;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 9px;
+}
+
+/* Mobile */
+
+@media(max-width:500px) {
+
+    .gold-border {
+        inset: 12px;
+    }
+
+    .cover h1 {
+        font-size: 65px;
+    }
+
+    .cover h2 {
+        font-size: 19px;
+    }
+
+    .card {
+        min-height: 88vh;
+        padding: 35px 25px;
+    }
+
+    .content h3 {
+        font-size: 48px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="invitation">
+
+    <!-- PAGE 1 -->
+
+    <section class="page1" id="page1">
+
+        <div class="gold-border"></div>
+
+        <!-- Golden particles -->
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+
+        <div class="cover">
+
+            <div class="small-text">
+                You Are Invited
+            </div>
+
+            <h1>
+                SAVE<br>
+                THE<br>
+                DATE
+            </h1>
+
+            <div class="line"></div>
+
+            <h2>
+                A SPECIAL CELEBRATION
+            </h2>
+
+            <button class="open-btn" onclick="openInvitation()">
+                OPEN INVITATION
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+
+    <section class="page2">
+
+        <div class="card">
+
+            <div class="inner-frame"></div>
+
+            <div class="content">
+
+                <div class="eyebrow">
+                    With Love & Happiness
+                </div>
+
+                <h3>
+                    You're<br>
+                    Invited
+                </h3>
+
+                <div class="subtitle">
+                    to a beautiful celebration
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="details">
+
+                    <strong>15 DECEMBER 2026</strong>
+                    <br>
+
+                    <strong>7:00 PM ONWARDS</strong>
+
+                    <br><br>
+
+                    Grand Celebration Hall
+                    <br>
+
+                    Mumbai, Maharashtra
+
+                </div>
+
+                <div class="location">
+                    We would love to celebrate this special
+                    moment with you.
+                </div>
+
+                <button class="close-btn" onclick="closeInvitation()">
+                    BACK TO COVER
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+function openInvitation() {
+    document.getElementById("page1").classList.add("open");
+}
+
+function closeInvitation() {
+    document.getElementById("page1").classList.remove("open");
+}
+
+</script>
+
+</body>
+</html>
